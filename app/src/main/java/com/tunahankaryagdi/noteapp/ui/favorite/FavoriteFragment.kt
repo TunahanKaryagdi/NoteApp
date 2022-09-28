@@ -5,20 +5,47 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import com.tunahankaryagdi.noteapp.R
+import com.tunahankaryagdi.noteapp.databinding.FragmentFavoriteBinding
+import com.tunahankaryagdi.noteapp.databinding.FragmentHomeBinding
+import com.tunahankaryagdi.noteapp.ui.favorite.adapter.FavoriteListAdapter
+import com.tunahankaryagdi.noteapp.ui.home.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class FavoriteFragment : Fragment() {
 
+    private lateinit var binding: FragmentFavoriteBinding
+    private val viewModel: FavoriteViewModel by activityViewModels()
+    private lateinit var adapter: FavoriteListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favorite, container, false)
+        binding = FragmentFavoriteBinding.inflate(layoutInflater)
+        return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initViews()
+        viewModel.getFavoriteNotes()
+        observeData()
+
+    }
+
+    private fun observeData() {
+        viewModel.favoriteNotes.observe(viewLifecycleOwner, Observer {
+            adapter.setList(it)
+        })
+    }
+
+    private fun initViews() {
+        adapter = FavoriteListAdapter()
+        binding.rvFavoriteList.adapter = adapter
+    }
 
 }

@@ -10,9 +10,6 @@
             name="note"
             type="com.tunahankaryagdi.noteapp.data.model.Note" />
 
-        <variable
-            name="listener"
-            type="com.tunahankaryagdi.noteapp.ui.home.adapter.HomeListClickListener" />
 
     </data>
 
@@ -39,7 +36,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/isfavorite"
-            android:onClick="@{()->listener.onItemFavoriteClick(note)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tvTitle" />
 

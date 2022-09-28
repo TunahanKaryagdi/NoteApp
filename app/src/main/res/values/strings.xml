@@ -8,4 +8,5 @@
     <string name="note">Note</string>
     <string name="title">Title</string>
     <string name="cancel">cancel</string>
+    <string name="isfavorite">isFavorite</string>
 </resources>

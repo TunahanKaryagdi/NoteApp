@@ -19,6 +19,16 @@ class HomeViewModel @Inject constructor(private val repository: NoteRepository) 
     var notes: MutableLiveData<List<Note>> = MutableLiveData()
 
 
+
+    fun update(note: Note){
+
+        viewModelScope.launch(Dispatchers.IO) {
+                repository.update(note)
+
+        }
+    }
+
+
     fun getData() {
 
         viewModelScope.launch(Dispatchers.IO) {

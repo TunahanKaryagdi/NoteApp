@@ -23,4 +23,12 @@ class NoteRepository @Inject constructor(private val noteDao: NoteDao) {
         noteDao.insertAll(note)
     }
 
+    suspend fun update(note: Note) {
+        noteDao.update(note.id,!note.isFavorite)
+    }
+
+    suspend fun getFavoriteNotes() : List<Note>{
+        return noteDao.getFavoriteNotes(true)
+    }
+
 }

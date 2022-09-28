@@ -9,9 +9,11 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.tunahankaryagdi.noteapp.R
+import com.tunahankaryagdi.noteapp.data.model.Note
 import com.tunahankaryagdi.noteapp.databinding.FragmentHomeBinding
 import com.tunahankaryagdi.noteapp.ui.add.AddFragment
 import com.tunahankaryagdi.noteapp.ui.home.adapter.HomeListAdapter
+import com.tunahankaryagdi.noteapp.ui.home.adapter.HomeListClickListener
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -44,7 +46,7 @@ class HomeFragment : Fragment() {
         initViews()
         getData()
         observe()
-        //
+
     }
 
     override fun onResume() {
@@ -54,7 +56,14 @@ class HomeFragment : Fragment() {
 
     }
     private fun initViews() {
-        adapter = HomeListAdapter()
+        adapter = HomeListAdapter(object : HomeListClickListener{
+            override fun onItemFavoriteClick(note: Note) {
+                viewModel.update(note)
+                adapter.notifyDataSetChanged()
+            }
+
+
+        })
         binding.rvList.adapter = adapter
     }
 

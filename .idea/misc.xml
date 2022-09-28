@@ -7,7 +7,9 @@
         <entry key="..\:/Users/Tunahan/Desktop/NoteApp2/app/src/main/res/drawable/ic_close.xml" value="0.251" />
         <entry key="..\:/Users/Tunahan/Desktop/NoteApp2/app/src/main/res/drawable/ic_favorite.xml" value="0.2055" />
         <entry key="..\:/Users/Tunahan/Desktop/NoteApp2/app/src/main/res/drawable/ic_home.xml" value="0.2165" />
+        <entry key="..\:/Users/Tunahan/Desktop/NoteApp2/app/src/main/res/drawable/ic_not_favorite.xml" value="0.1" />
         <entry key="..\:/Users/Tunahan/Desktop/NoteApp2/app/src/main/res/layout/activity_main.xml" value="0.20153985507246377" />
+        <entry key="..\:/Users/Tunahan/Desktop/NoteApp2/app/src/main/res/layout/favorite_list_item.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/Tunahan/Desktop/NoteApp2/app/src/main/res/layout/fragment_add.xml" value="0.20153985507246377" />
         <entry key="..\:/Users/Tunahan/Desktop/NoteApp2/app/src/main/res/layout/fragment_favorite.xml" value="0.20153985507246377" />
         <entry key="..\:/Users/Tunahan/Desktop/NoteApp2/app/src/main/res/layout/fragment_home.xml" value="0.20153985507246377" />
