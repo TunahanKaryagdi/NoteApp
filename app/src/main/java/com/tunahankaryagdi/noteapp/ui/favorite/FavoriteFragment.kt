@@ -26,13 +26,14 @@ class FavoriteFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentFavoriteBinding.inflate(layoutInflater)
+        initViews()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initViews()
-        viewModel.getFavoriteNotes()
+
+        getFavoriteData()
         observeData()
 
     }
@@ -48,4 +49,8 @@ class FavoriteFragment : Fragment() {
         binding.rvFavoriteList.adapter = adapter
     }
 
+
+    private fun getFavoriteData(){
+        viewModel.getFavoriteNotes()
+    }
 }

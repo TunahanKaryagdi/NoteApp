@@ -50,4 +50,5 @@ class HomeListAdapter (private val listener: HomeListClickListener): RecyclerVie
 
 public interface HomeListClickListener{
     fun onItemFavoriteClick(note: Note)
+    fun onItemDeleteClick(note: Note)
 }

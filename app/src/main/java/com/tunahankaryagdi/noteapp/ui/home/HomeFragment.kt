@@ -1,10 +1,12 @@
 package com.tunahankaryagdi.noteapp.ui.home
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -30,6 +32,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(layoutInflater)
+        initViews()
         return binding.root
     }
 
@@ -43,27 +46,23 @@ class HomeFragment : Fragment() {
 
 
         }
-        initViews()
         getData()
         observe()
-
     }
 
-    override fun onResume() {
-        super.onResume()
-        getData()
-        observe()
 
-    }
     private fun initViews() {
         adapter = HomeListAdapter(object : HomeListClickListener{
             override fun onItemFavoriteClick(note: Note) {
                 viewModel.update(note)
-                adapter.notifyDataSetChanged()
             }
 
 
+            override fun onItemDeleteClick(note: Note) {
+                viewModel.delete(note)
+            }
         })
+
         binding.rvList.adapter = adapter
     }
 
@@ -76,7 +75,7 @@ class HomeFragment : Fragment() {
     }
 
 
-    fun getData() {
+    private fun getData() {
         viewModel.getData()
     }
 

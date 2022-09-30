@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.tunahankaryagdi.noteapp.data.model.Note
+import com.tunahankaryagdi.noteapp.databinding.FavoriteListItemBinding
 import com.tunahankaryagdi.noteapp.databinding.HomeListItemBinding
 
 class FavoriteListAdapter : RecyclerView.Adapter<FavoriteListAdapter.FavoriteListViewHolder>() {
@@ -16,7 +17,7 @@ class FavoriteListAdapter : RecyclerView.Adapter<FavoriteListAdapter.FavoriteLis
 
     }
 
-    class FavoriteListViewHolder(private val binding : HomeListItemBinding)  : RecyclerView.ViewHolder(binding.root){
+    class FavoriteListViewHolder(private val binding : FavoriteListItemBinding)  : RecyclerView.ViewHolder(binding.root){
 
         fun bind(note: Note){
             binding.note =note
@@ -25,7 +26,7 @@ class FavoriteListAdapter : RecyclerView.Adapter<FavoriteListAdapter.FavoriteLis
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteListViewHolder {
-        val binding = HomeListItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = FavoriteListItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return  FavoriteListViewHolder(binding)
 
     }

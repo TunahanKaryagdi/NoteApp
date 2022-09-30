@@ -19,11 +19,13 @@ class HomeViewModel @Inject constructor(private val repository: NoteRepository) 
     var notes: MutableLiveData<List<Note>> = MutableLiveData()
 
 
-
-    fun update(note: Note){
+    fun update(note: Note) {
 
         viewModelScope.launch(Dispatchers.IO) {
-                repository.update(note)
+            repository.update(note)
+                .also {
+                    getData()
+                }
 
         }
     }
@@ -33,7 +35,7 @@ class HomeViewModel @Inject constructor(private val repository: NoteRepository) 
 
         viewModelScope.launch(Dispatchers.IO) {
             var response = repository.getAll()
-            withContext(Dispatchers.Main){
+            withContext(Dispatchers.Main) {
                 notes.postValue(response)
             }
 
@@ -41,4 +43,13 @@ class HomeViewModel @Inject constructor(private val repository: NoteRepository) 
 
     }
 
+    fun delete(note: Note) {
+
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteNote(note).also {
+                getData()
+            }
+
+        }
+    }
 }
